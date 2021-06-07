@@ -5,12 +5,13 @@ const { getUsers, postUsers, deleteUsers, putUsers } = require('../controllers/u
 
 const { fieldValidation } = require('../middlewares/field-validation');
 const { emailExist } = require('../helpers/db-validators');
+const { verifyJWT } = require('../middlewares/verify-jwt');
 
 const router = Router();
 
-router.get('/', getUsers);
-
-router.put('/', putUsers);
+router.put('/',[
+    verifyJWT
+],putUsers);
 
 router.post('/', [
     check('email', 'Invalid email').isEmail(),

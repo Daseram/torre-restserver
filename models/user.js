@@ -18,7 +18,7 @@ const userSchema = Schema({
     state: {
         type: Boolean,
         default: true
-    }
+    },
 
 });
 
